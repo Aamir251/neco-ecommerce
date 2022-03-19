@@ -1,0 +1,16 @@
+@import "./base/reset";
+@import "./utils/mixins";
+@import "./utils/variables";
+
+@import "./shared/button";
+@import "./components/navbar";
+
+// pages
+@import "./pages/home/index";
+
+
+body {
+    max-width: 1450px;
+    margin: auto;
+    overflow-x: hidden;
+}
