@@ -4,13 +4,14 @@
 
 @import "./shared/button";
 @import "./components/navbar";
-
+@import "./components/loading";
 // pages
 @import "./pages/home/index";
+@import "./pages/allcollections/index";
 
 
 body {
     max-width: 1450px;
     margin: auto;
-    overflow-x: hidden;
+    overflow: hidden;
 }

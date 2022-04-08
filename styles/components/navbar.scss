@@ -17,9 +17,75 @@ nav {
         object-fit: cover;
     }
 
+    .nav_menu {
+        z-index: 50;
+        @extend %cover;
+        clip-path: circle(0.2% at 100% 0);
+        transition: clip-path 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+        &.active {
+            clip-path: circle(141.4% at 100% 0);
+            
+        }
+        background: $color-green;
+        .nav_menu_logo_wrapper {
+            height: 35%;
+            background-color: $background-color-dark;
+            width: 100%;
+            @extend %center;
+            align-items: flex-start;
+            border-bottom: 1px solid red;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+
+            .nav_menu_logo {
+                width: 150px;
+                height: auto;
+            }
+        }
+
+        .nav_menu_links_wrapper {
+            @extend %center;
+            height: 60%;
+            ul {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                gap: 1rem;
+                position: relative;
+                li {
+                    padding: 1rem;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    font-size: 30px;
+                    font-weight: 300;
+                    color: $color-white;
+                    .menu_item_img_wrapper {
+                        position: absolute;
+                        height: 150px;
+                        width: 100px;
+                        opacity: 0;
+                        top: -75px;
+                        z-index: -1;
+                        transition: opacity 0.3s ease;
+
+                        &.active {
+                            opacity: 0.5;
+                        }
+                        img {
+                            object-fit: cover;
+                            
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+
+    // menu icon open
     .nav_menu_icon_wrapper {
         width: 60px;
         height: 100%;
+        cursor: pointer;
         @extend %center;
         overflow: hidden;
 
@@ -28,7 +94,7 @@ nav {
             height: 25px;
             position: relative;
             @extend %center;
-
+            z-index: 100;
 
             span {
                 display: block;

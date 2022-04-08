@@ -1,0 +1,34 @@
+.loading_screen {
+    height: 100vh;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
+    
+    overflow: hidden;
+    background-color: $background-color-dark;
+    
+    .loading_screen_wrapper {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        @extend %center;
+        background-color: $background-color-dark;
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+        
+        .background_green {
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            bottom: 0;
+            clip-path: polygon(0 95%, 100% 74%, 100% 100%, 0 100%);
+            background-color: $color-green;
+        }
+
+    }
+}

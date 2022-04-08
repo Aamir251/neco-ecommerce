@@ -1,9 +1,10 @@
-import Navbar from "./Navbar"
+import Navbar from "./Navbar";
 
-const Layout = ({children}) => {
+const Layout = ({children, isNavOpen, setIsNavOpen }) => {
+    const navProps = { isNavOpen, setIsNavOpen }
     return <>
-        <Navbar />
-        {children}
+            <Navbar { ...navProps} />
+            {children}
     </>
 }
 

@@ -1,10 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import ArrowIcon from "../global/ArrowIcon";
+import { useEffect, useRef } from "react";
+import gsap from 'gsap'
+import { showLoader, hideLoader } from "../../helpers/loader";
 
 
-const Homepage = () => {
-  return <section className="home">
+const Homepage = ({loadingComplete , setIsLoading, loader, setloadComplete }) => {
+    let page = useRef(null)
+   useEffect(() => {
+       gsap.set(page, { opacity : 0 })
+        if(!loader) return
+
+
+    if (loadingComplete) {
+        hideLoader(loader).then(() => {
+            gsap.to(page, { opacity : 1, duration : 0.6})
+        })
+    }
+    return () => {
+        gsap.set(page, { opacity : 0 })
+    }
+   }, [loader, loadingComplete])
+
+   useEffect(() => {
+   
+   }, [])
+  return <section ref={el => page = el } className="home" data-barba="container" data-barba-namespace="collections">
     <div className="home_wrapper">
         <div className="home_row_layout">
             <div className="home_figure home_figure_primary">
@@ -17,7 +39,7 @@ const Homepage = () => {
 
                     </div>
                     <div className="home_button_wrapper">
-                        <Link href="/" passHref>
+                        <Link href="/collections" passHref>
                             <div className="button_primary">
                                 <a><span>Shop Now </span></a>
                             <ArrowIcon />
