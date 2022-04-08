@@ -18,7 +18,7 @@ export default function Collections(props) {
   }
 
 
-  export const getStaticProps = async () => {
+  export const getServerSideProps = async () => {
     const {data : allCollections} = await commerce.products.list()
     console.log("All collections are",allCollections);
     return {
