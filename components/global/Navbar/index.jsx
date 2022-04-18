@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MenuIcon from "./MenuIcon";
 import MenuItem from "./MenuItem";
 import {navLinks} from "./navlinks"
+import { useRouter } from "next/router";
 
 const Navbar = ({isNavOpen, setIsNavOpen }) => {
-
+    const router = useRouter()
+    const [ navBgColor, setNavBgColor ] = useState()
     useEffect(() => {
-        console.log(isNavOpen);
-    },[isNavOpen])
+        const backgroundColor = router.pathname === "/collections/[singleProduct]" ? "#ffffff" : "rgba(255, 245, 237, 0.54)";
+        setNavBgColor(backgroundColor)
+    },[router])
 
-    return <nav>
+    return <nav style={{backgroundColor : `${navBgColor}`}}>
      <div className="nav_wrapper">
         <div className="nav_logo_wrapper">
             <img  className="logo" alt="neca fashion" src="/logo.png" />

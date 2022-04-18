@@ -1,17 +1,22 @@
+// base/foundations
 @import "./base/reset";
-@import "./utils/mixins";
 @import "./utils/variables";
+@import "./utils/mixins";
 
+
+// Components
 @import "./shared/button";
 @import "./components/navbar";
 @import "./components/loading";
+
 // pages
 @import "./pages/home/index";
 @import "./pages/allcollections/index";
+@import "./pages/single_product/index";
 
 
 body {
     max-width: 1450px;
     margin: auto;
-    overflow-y: hidden !important;
+    // overflow-y: hidden !important;
 }

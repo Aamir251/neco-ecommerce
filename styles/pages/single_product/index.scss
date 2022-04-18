@@ -1,0 +1,153 @@
+.productpage {
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    max-width: 1200px;
+    margin: auto;
+    
+    .single_product {
+        height: inherit;
+        width: 90%;
+        margin: auto;
+        
+        .product {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: inherit;
+
+            figure {
+                width: 75%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    
+                }
+            }
+            
+            @media (max-width : 768px) {
+                grid-template-columns: none;
+                
+                figure {
+                    width: 75%;
+                    height: 60vh;
+
+                    img {
+                        object-fit: cover;
+                        object-position: 0 -30px;
+                    }
+                }
+                
+
+            }
+
+            // product description
+            .product_details {
+                h1 {
+                    font-size: 4rem;
+                    position: relative;
+                    @extend %horizontal-line
+                }
+
+                .product_price {
+                    font-size: 1.5rem;
+                    margin: 0.5rem 0;
+                }
+
+                .product_rating {
+                    width: 100px;
+                }
+
+                .product_description {
+                    color: $dark-gray;
+                    position: relative;
+                    margin: 1rem 0;
+                    line-height: 1.5rem;
+                    @extend %description-icon;
+                    
+                }
+
+                .product_sizes {
+                    display: flex;
+                    gap: 0.5rem;
+                    position: relative;
+                    margin-bottom: 1rem;
+                    @extend %size-icon;
+
+                    .product_size {
+                        border: 1px solid $color-green;
+                        width: 40px;
+                        height: 30px;
+                        @extend %center;
+                        cursor: pointer;
+                        opacity: 0.3;
+                        transition: opacity 0.3s ease;
+
+                        &.selected {
+                            opacity: 1;
+                        }
+                    }
+                }
+                
+                .product_quantity {
+                    position: relative;
+                    @extend %qty-icon;
+                    margin: 1rem 0;
+
+                    h5 {
+                        font-size: 24px;
+                        letter-spacing: 0.1em;
+                        margin-bottom: 0.5rem;
+                    }
+                    
+                    .product_quantity_selector {
+                        margin-top: 1rem;
+                        width: 100px;
+                        height: 30px;
+                        border: 1px solid $color-green;
+                        padding: 0.2rem 0.5rem;
+                        @extend %center;
+                        justify-content: space-between;
+
+                        button {
+                            background-color: transparent;
+                            font-size: 1.3rem;
+                            padding: 0 0.5rem;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+            }    
+
+        }
+
+        @media (max-width : 768px) {
+            
+            .product {
+                padding: 40px 1rem 100px 0;
+                
+                .product_details {
+                    width: calc(100% - 50px);
+                    margin-left: auto;
+                    h1 {
+                        font-size: 2.5rem;
+                    }
+                    
+                    .product_description {
+                        font-size: 12px;
+                    }
+                    
+                    .product_quantity {
+                        h5 {
+                            font-size: 20px;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+
+
+}

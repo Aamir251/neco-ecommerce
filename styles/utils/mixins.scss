@@ -28,3 +28,56 @@
     width: 100vw;
     height: 100vh;
 }
+
+%icon-properties {
+    position: absolute;
+    content: "";
+    width: 36px;
+    height: 36px;
+    background-position: center;
+    left: -65px;
+    top: 5%;
+
+    @media (max-width : 768px) {
+        left: -55px;
+    }
+}
+
+%description-icon {
+    &:before {
+        @extend %icon-properties;
+        background-image: url('/images/description-icon.svg');
+        
+
+    }
+}
+
+
+%size-icon {
+
+    &:before {
+        @extend %icon-properties;
+        background-image: url("/images/size-icon.svg");
+
+    }
+}
+
+%qty-icon {
+    &::before {
+        @extend %icon-properties;
+        background-image: url("/images/qty-icon.svg");
+    }
+}
+
+%horizontal-line {
+    &:before {
+        position: absolute;
+        content: "";
+        width: 3rem;
+        height: 2px;
+        left: -3.5rem;
+        background-color: $color-green;
+        top: 50%;
+
+    }
+}

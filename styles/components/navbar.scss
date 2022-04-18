@@ -1,9 +1,9 @@
 nav {
-    background-color: $background-color;
-    height: 7vh;
+    height: 50px;
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 100;
     .nav_wrapper {
         @extend %center;
         justify-content: space-between;
@@ -19,7 +19,6 @@ nav {
     }
 
     .nav_menu {
-        z-index: 50;
         @extend %cover;
         clip-path: circle(0.2% at 100% 0);
         transition: clip-path 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);

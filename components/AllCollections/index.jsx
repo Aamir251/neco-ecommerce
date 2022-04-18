@@ -5,6 +5,7 @@ import { revealPage } from "../../helpers/page";
 import Image from "next/image";
 import HorizontalScroller from 'react-horizontal-scroll-container';
 import { useInView } from 'react-intersection-observer';
+import Link from "next/link";
 
 
 const AllCollections = ({ loader, allCollections, loadingComplete }) => {
@@ -86,8 +87,12 @@ const EachCollection = ({collection, addToImgRef, container}) => {
             }
         }
     } , [inView, entry])
-    return <figure ref={ref} >
-            <h2>{collection.name}</h2>
-            <img  ref={addToImgRef } alt=""  src={collection.image.url} />
-        </figure>
+    return <Link href={`/collections/${collection.id}`}>
+        <a>
+            <figure ref={ref} >
+                <h2>{collection.name}</h2>
+                <img  ref={addToImgRef } alt=""  src={collection.image.url} />
+            </figure>
+        </a>
+    </Link>
 }
