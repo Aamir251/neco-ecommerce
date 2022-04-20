@@ -7,10 +7,11 @@ const ProductDetails = ({product}) => {
 
     const [ qty, setQty ] = useState(1)
     const [ sizeSelected, setSizeSelected ] = useState("S")
-
+    
     return <article className="product">
         <figure>
-            <img src={product.image.url} />
+        <span className="watermark">neco fashion</span>
+            <img src={product.image.url} alt="" />
         </figure>
 
         {/* product details */}

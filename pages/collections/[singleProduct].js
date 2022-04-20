@@ -23,10 +23,9 @@ export const getServerSideProps = async (params) => {
   const productId = params.query.singleProduct
   
   const product = await commerce.products.retrieve(productId)
-
     return {
       props: {
-        product
+        product,
       }
     }
   }

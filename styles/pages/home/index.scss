@@ -1,6 +1,5 @@
 .home {
-    height: 93vh;
-    background: $background-color;
+    height: 100vh;
     color: $color-green;
     overflow-y: hidden;
 }
@@ -12,7 +11,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     place-items: center;
-
+    margin-top: 90px;
     .home_row_layout {
         display: grid;
         grid-template-columns: 3fr 1fr;
@@ -26,12 +25,16 @@
             .home_figure_primary_image { 
                 // height: 80vh;
                 height: 100%;
-                @extend %background-image;
-                background-size: cover;
-                background-position: top;
-                @media (min-width : 1260px) {
+                overflow: hidden;
+                div {
+                    height: inherit;
+                    @extend %background-image;
+                    background-size: cover;
+                    background-position: top;
+                    @media (min-width : 1260px) {
 
-                    background-position: center;
+                        background-position: center;
+                    }
                 }
 
             }
@@ -72,8 +75,13 @@
 
             .home_figure_secondary_image {
                 height: 50vh;
-                @extend %background-image;
-                background-size: cover;
+                overflow: hidden;
+                div {
+                    height: inherit;
+                    @extend %background-image;
+                    background-size: cover;
+
+                }
 
 
             }

@@ -16,7 +16,12 @@
 
 
 body {
-    max-width: 1450px;
+    background: $background-color;
+
+}
+
+.main_wrapper {
+    max-width: 1550px;
     margin: auto;
-    // overflow-y: hidden !important;
+    position: relative;
 }

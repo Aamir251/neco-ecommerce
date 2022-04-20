@@ -4,28 +4,30 @@ import ArrowIcon from "../global/ArrowIcon";
 import { useEffect, useRef } from "react";
 import gsap from 'gsap'
 import { showLoader, hideLoader } from "../../helpers/loader";
+import { homepageAnimation } from "./animation";
 
 
 const Homepage = ({loadingComplete , setIsLoading, loader, setloadComplete }) => {
     let page = useRef(null)
    useEffect(() => {
-       gsap.set(page, { opacity : 0 })
-        if(!loader) return
+       
+       gsap.set(page, { opacity : 0 })  //setting page opacity to 0
+        if(!loader || !page) return
 
+        if (loadingComplete) {  
+            //hide loader only if it has completed loading
+            hideLoader(loader).then(() => {
+                gsap.to(page, { opacity : 1, duration : 0.6})
+            }).then(() => {
+                 homepageAnimation(page)
+            })
+        }
+        return () => {
+            gsap.set(page, { opacity : 0 })
+        }
+   }, [page, loader, loadingComplete])
 
-    if (loadingComplete) {
-        hideLoader(loader).then(() => {
-            gsap.to(page, { opacity : 1, duration : 0.6})
-        })
-    }
-    return () => {
-        gsap.set(page, { opacity : 0 })
-    }
-   }, [loader, loadingComplete])
-
-   useEffect(() => {
-   
-   }, [])
+  
   return <section ref={el => page = el } className="home" data-barba="container" data-barba-namespace="collections">
     <div className="home_wrapper">
         <div className="home_row_layout">
@@ -35,7 +37,9 @@ const Homepage = ({loadingComplete , setIsLoading, loader, setloadComplete }) =>
                     <h6 className="figure_collection_label">collection</h6>
                 </div>
                 <div>
-                    <div className="home_figure_primary_image" style={{backgroundImage : `url('/images/primary.jpg')`}} >
+                    <div className="home_figure_primary_image" >
+                        <div style={{backgroundImage : `url('/images/primary.jpg')`}} >
+                    </div>
 
                     </div>
                     <div className="home_button_wrapper">
@@ -56,7 +60,10 @@ const Homepage = ({loadingComplete , setIsLoading, loader, setloadComplete }) =>
             <p className="home_description">Get amazing dress that embrace latest fashion trends & take your fashion game to next level</p>
             <div className="home_figure home_figure_secondary">
                 {/* img goes here */}
-                <div className="home_figure_secondary_image" style={{height : "50vh", backgroundImage : `url('/images/secondary.jpg')`}}>
+                <div className="home_figure_secondary_image">
+                    <div  style={{height : "50vh", backgroundImage : `url('/images/secondary.jpg')`}}>
+
+                </div>
 
                 </div>
                 <div className="figure_collection">

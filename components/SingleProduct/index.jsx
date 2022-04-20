@@ -6,10 +6,9 @@ import ProductDetails from "./ProductDetails";
 
 const SingleProduct = ({ loader, product, loadingComplete}) => {
     let page = useRef(null)
-    console.log(product)
+    console.log("PRODUCT",product)
     useEffect(() => {
         gsap.set(page, { opacity: 0 })
-
     }, [])
 
     useEffect(() => {
@@ -20,6 +19,8 @@ const SingleProduct = ({ loader, product, loadingComplete}) => {
                 })
         }
     }, [loadingComplete])
+
+
     return <section ref={el => page = el} className="single_product">
         <ProductDetails product={product} />
     </section>
