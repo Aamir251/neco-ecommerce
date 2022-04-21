@@ -2,13 +2,14 @@
     height: 100vh;
     color: $color-green;
     overflow-y: hidden;
+    opacity: 0;
 }
 
 .home_wrapper {
     width: 90%;
     margin: auto;
-    height:  95vh;
     display: grid;
+    height: calc(100% - 90px);
     grid-template-columns: 2fr 1fr;
     place-items: center;
     margin-top: 90px;

@@ -3,7 +3,7 @@ import ProductSizes from "./ProductSizes";
 import { useState } from "react";
 import CartButton from "./CartButton";
 
-const ProductDetails = ({product}) => {
+const ProductDetails = ({product, onAddToCart }) => {
 
     const [ qty, setQty ] = useState(1)
     const [ sizeSelected, setSizeSelected ] = useState("S")
@@ -34,7 +34,7 @@ const ProductDetails = ({product}) => {
 
             <ProductQuantity qty={qty} setQty={setQty} />
 
-            <CartButton />
+            <CartButton onAddToCart={onAddToCart} />
 
         </div>
     </article>

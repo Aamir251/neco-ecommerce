@@ -4,7 +4,7 @@ import { hideLoader } from "../../helpers/loader";
 import { revealPage } from "../../helpers/page";
 import ProductDetails from "./ProductDetails";
 
-const SingleProduct = ({ loader, product, loadingComplete}) => {
+const SingleProduct = ({ loader, product, loadingComplete, handleAddToCart }) => {
     let page = useRef(null)
     console.log("PRODUCT",product)
     useEffect(() => {
@@ -22,7 +22,7 @@ const SingleProduct = ({ loader, product, loadingComplete}) => {
 
 
     return <section ref={el => page = el} className="single_product">
-        <ProductDetails product={product} />
+        <ProductDetails product={product} onAddToCart={handleAddToCart} />
     </section>
 }
 

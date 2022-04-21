@@ -9,26 +9,28 @@ import { homepageAnimation } from "./animation";
 
 const Homepage = ({loadingComplete , setIsLoading, loader, setloadComplete }) => {
     let page = useRef(null)
+    // useEffect(() => {
+        
+    //     gsap.set(page, { opacity : 0 })  //setting page opacity to 0
+            
+    // }, [])
+
    useEffect(() => {
-       
-       gsap.set(page, { opacity : 0 })  //setting page opacity to 0
-        if(!loader || !page) return
+    if(!loader || !page) return
 
-        if (loadingComplete) {  
-            //hide loader only if it has completed loading
-            hideLoader(loader).then(() => {
-                gsap.to(page, { opacity : 1, duration : 0.6})
-            }).then(() => {
-                 homepageAnimation(page)
-            })
-        }
-        return () => {
-            gsap.set(page, { opacity : 0 })
-        }
-   }, [page, loader, loadingComplete])
+    if (loadingComplete) { 
+        //hide loader only if it has completed loading
+        hideLoader(loader).then(() => {
+            console.log("set page - 1");
+            gsap.to(page, { opacity : 1, duration : 0.6, onComplete : () => console.log("anim comp")})
+        }).then(() => {
+             homepageAnimation(page)
+        })
+    }
 
+   }, [loader, loadingComplete])
   
-  return <section ref={el => page = el } className="home" data-barba="container" data-barba-namespace="collections">
+  return <section ref={el => page = el } className="home" >
     <div className="home_wrapper">
         <div className="home_row_layout">
             <div className="home_figure home_figure_primary">

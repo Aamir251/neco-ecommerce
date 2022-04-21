@@ -34,17 +34,21 @@ function MyApp({ Component, pageProps }) {
 
   },[loader])
 
-  // useEffect for fetching cart details
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve())
   }
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity)
+    setCart(item.cart)
+  }
+  // useEffect for fetching cart details
   useEffect(() => {
     fetchCart()
   },[])
   useEffect(() => {
     console.log("browser CART", cart)
   },[cart])
-  const props = { loader, isLoading, setIsLoading, isNavOpen, setIsNavOpen, loadingComplete, setLoadingComplete }
+  const props = { loader, isLoading, setIsLoading, isNavOpen, setIsNavOpen, loadingComplete, setLoadingComplete, handleAddToCart }
   const navProps = { isNavOpen, setIsNavOpen }
 
   return <Layout {...navProps} >
